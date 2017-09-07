@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rim KEK CHEBUREK)))0)00))</title>
+
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/jquery.maskedinput.js"></script>
+
+
+
+  </head>
+
+  <body style="overflow-x: hidden; overflow-y: hidden;">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Абонементы</a></li>
+    <li><a data-toggle="tab" href="#menu1">Касса</a></li>
+    <li id="reports"><a data-toggle="tab" href="#menu2">Отчеты</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <div class="row" >
+        <div class="col-sm-3" style="height: 100vh; background-color: #F0F4F8;">
+          <div class="row" >
+            <div class="col-sm-12" style="width: 100%;  padding: 0 0 0 12px; ">
+              <input id="searchClient" type="text" style=" float:left; width: 68%; margin-left: 3px;">
+              <button id="searchBtn" style="float:left; width: 15%;"><i class="fa fa-search"></i></button>
+              <button type="button" data-tog="tooltip" title="Добавить клиента" data-placement="right"  data-toggle="modal" data-target="#myModal" style="float:left; width: 15%;"><i class="fa fa-plus"></i></button>
+            </div>
+            <div id="leftSidebar" class="col-sm-12" >
+
+            </div>
+          </div>
+
+        </div>
+        <div id="rightSide" class="col-sm-9" style="height: calc(100vh - 42px); background-color: white;">
+          <!--<div class="col-sm-3" style="float:right;  height: 100vh; background-color: #0c5460;">-->
+
+          <!--</div>-->
+        </div>
+
+
+      </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div class="row main">
+         <div id="leftSideCash" class="col-sm-4" style="height: calc(100vh - 42px); background-color: #F0F4F8; display: block; overflow-y: auto;">
+           <div class="panel-group" id="collapse-group" style="width: 100%; margin-left: 7px; margin-top: 4px;">
+             <button id="showAddNewProductModal" data-tog="tooltip" data-placement="bottom" title="Добавить номенклатуру" class="btn btn-success" data-toggle="modal" data-target="#addNewProduct" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
+             <button id="showAddNewInvoiceModal" data-tog="tooltip" data-placement="bottom" title="Приход" class="btn btn-info" data-toggle="modal" data-target="#addNewInvoice" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
+             <button class="btn btn-info" data-tog="tooltip" data-placement="bottom" title="Расход" data-toggle="modal" data-target="#addNewSpending" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
+             <button id="createNewCheck" data-tog="tooltip" data-placement="bottom" title="Открыть чек" class="btn btn-info" data-toggle="modal" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el1"><i class="fa fa-glass"></i> Бар</a>
+                 </h4>
+               </div>
+               <div id="el1" class="panel-collapse collapse">
+                 <div class="panel-body" id="bar">
+
+                 </div>
+               </div>
+             </div>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el2"><i class="fa fa-glass"></i> Расходники</a>
+                 </h4>
+               </div>
+               <div id="el2" class="panel-collapse collapse">
+                 <div class="panel-body" id="consu">
+
+                 </div>
+               </div>
+             </div>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el3"><i class="fa fa-glass"></i> Вода</a>
+                 </h4>
+               </div>
+               <div id="el3" class="panel-collapse collapse">
+                 <div class="panel-body" id="water">
+
+                 </div>
+               </div>
+             </div>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el4"><i class="fa fa-glass"></i> Спортпит</a>
+                 </h4>
+               </div>
+               <div id="el4" class="panel-collapse collapse">
+                 <div class="panel-body" id="sport">
+
+                 </div>
+               </div>
+             </div>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el5"><i class="fa fa-wheelchair-alt"></i> Инвентарь</a>
+                 </h4>
+               </div>
+               <div id="el5" class="panel-collapse collapse">
+                 <div class="panel-body" id="inventory">
+
+                 </div>
+               </div>
+             </div>
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                 <h4 class="panel-title">
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el6"><i class="fa fa-gear"></i> Прочее</a>
+                 </h4>
+               </div>
+               <div id="el6" class="panel-collapse collapse">
+                 <div class="panel-body" id="other">
+
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div id="rightSideCash" class="col-sm-8" style="height: 100vh; background-color: white; padding-left: 0;">
+
+         </div>
+       </div>
+    </div>
+    <div id="menu2"  class="tab-pane fade">
+      <div style="width: 40%;">
+        <div>
+          <input style="width: 50%; float: left;" class="form-control" type="date">
+        </div>
+        <div>
+          <input style="width: 50%; float: left;" class="form-control" type="date">
+        </div>
+      </div>
+      <div  style="width: 40%;">
+        <input type="checkbox" style="width: 20%; float: left;" data-tog="tooltip" data-placement="bottom" title="Полько по продукту">
+        <select style="width: 80%; float: left;" class="form-control" name="" id="productReport">
+
+        </select>
+      </div>
+      <div style="width: 60px; height: 60px; position: absolute; left: 41%;">
+        <button style="width: 60px; height: 60px; font-size: larger;" class="btn btn-success">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+    <div class="clearfix"></div>
+
+    <div class="modal fade modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal">
+                <i class="fa fa-times"></i>
+              </button>
+              <h4 class="modal-title">Добавление клиента</h4>
+            </div>
+            <div class="modal-body" >
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="text" class="form-control" id="surname" placeholder="Фамилия"/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="text" class="form-control" id="name" placeholder="Имя"/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="text" class="form-control" id="patronymics" placeholder="Отчество"/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="text" class="form-control" id="phone" placeholder="Телефон"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button id="addNewClientBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Сохранить</button>
+              <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade modal" id="addSubModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal">
+              <i class="fa fa-times"></i>
+            </button>
+            <h4 class="modal-title">Добавление абонемента</h4>
+          </div>
+          <div class="modal-body" >
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <select id="type" class="form-control">
+                <option value="" selected disabled>Тип абонемента</option>
+                <option value="Зал">Зал</option>
+                <option value="Фитнес">Фитнес</option>
+                <option value="Йога">Йога</option>
+                <option value="Детская Гимнастика">Детская Гимнастика</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <select id="visits" class="form-control">
+                <option value="" selected disabled>Количество посещений</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="date" class="form-control" id="date-start"/>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="date" class="form-control" id="date-end"/>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="text" class="form-control" id="trainer" placeholder="Тренер"/>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="text" class="form-control" id="cost" placeholder="Цена"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="addNewSubBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Добавить</button>
+            <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade modal" id="addNewProduct">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal">
+              <i class="fa fa-times"></i>
+            </button>
+            <h4 class="modal-title">Добавление товара</h4>
+          </div>
+          <div class="modal-body" >
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <select class="form-control" id="product-type">
+
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="text" class="form-control" id="product-name" placeholder="Название товара"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="addNewProductBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Добавить</button>
+            <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade modal" id="addNewInvoice">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </button>
+          <h4 class="modal-title">Добавление товара <button id="addNewProductToInvoice" class="btn btn-success" data-tog="tooltip" data-placement="right" title="Добавить новый товар в список"><i class="fa fa-plus"></i></button></h4>
+        </div>
+        <div class="modal-body" id="invoiceBody" style="display: block; overflow-y: auto; height: 65vh;">
+
+        </div>
+        <div class="modal-footer">
+          <button id="addNewInvoiceBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Добавить</button>
+          <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade modal" id="addNewSpending">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </button>
+          <h4 class="modal-title">Расходы</h4>
+        </div>
+        <div class="modal-body" style="display: block; overflow-y: auto; height: 25vh;">
+          <div>
+            <label style="width: 70%; float: left;" >Куда</label>
+            <label style="width: 30%; float: left;" >Сумма</label>
+            <input type="text" style="width: 70%; float: left;" class="form-control">
+            <input type="text" style="width: 30%; float: left;" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="addNewSpendingBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Добавить</button>
+          <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <template id="clientSideBar">
+      <div class="client form-control" >
+        <span></span>
+        <span></span>
+        <span style="display: none;"></span>
+      </div>
+    </template>
+
+    <template id="currentClientTpl">
+      <div style="width: 100%; position: absolute; top: 0; height: 25%; background-color: white; float: left;">
+        <span style="width: 100%; display: block; background-color: white;"></span>
+        <span style="width: 100%; display: block; background-color: white;"></span>
+        <span style="width: 100%; display: block; background-color: white;"></span>
+        <div id="id-client" style="display: none;"></div>
+        <button type="button"  data-toggle="modal" data-target="#addSubModal" style="float:right; width: 15%;"><i class="fa fa-plus"></i></button>
+      </div>
+      <div style="width: 100%; height: 75%; position: absolute; bottom: 0; background-color: white; float: left;">
+        <div id="currentClientSub" style="width: 80%; float: left;">
+
+        </div>
+        <div style="width: 20%; float: left;">
+
+        </div>
+      </div>
+    </template>
+
+    <template id="currentClientSubTpl">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Тип</th>
+          <th>Посещения</th>
+          <th>Дата начала</th>
+          <th>Дата окончания</th>
+          <th>Тренер</th>
+          <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </template>
+
+    <template id="invoiceTpl">
+      <div class="row invoiceItem" style="margin-bottom: 4px; margin-left: 2px; margin-right: 2px;">
+        <div style="width: 25%; display: inline-block;" >
+          <select name=""  class="form-control product">
+
+          </select>
+        </div>
+        <div style="width: 20%; display: inline-block;">
+          <input type="number" min="0" class="form-control count">
+        </div>
+        <div style="width: 20%; display: inline-block;">
+          <select name=""  class="form-control units">
+
+          </select>
+        </div>
+        <div style="width: 25%; display: inline-block;">
+          <div style="display: inline-flex;">
+            <input type="text" class="form-control cost" style="width:60%; display: inline-block;">
+            <span style="display: inline-block; width:40%;">грн/шт</span>
+          </div>
+        </div>
+        <button class="btn btn-danger deleteCurrentInvoice" style="display: inline-block;"><i class="fa fa-times"></i></button>
+      </div>
+    </template>
+
+    <template id="productTpl">
+      <div class="invoiceProduct" style="border-radius: 8px; width: 100%; height: 60px; margin-bottom: 2px; z-index: 99999999;">
+        <div style="z-index: -1; width: 100%; min-height: 40px; float: left; background-color: #F1F1F1; border-bottom: black solid 1px; padding: 8px 0 0 8px; border-radius: 4px 4px 0 0;">
+          <div class="invoice-id" style="z-index: -1; display: none;"></div>
+          <div class="product-name" style="z-index: -1; min-height: 40px; width: 55%; float:left; font-size: 12pt; overflow: hidden;">Самогон</div>
+          <div class="product-amount" style="z-index: -1; height: 40px; width: 25%; float:left; font-size: 12pt; overflow: hidden;">24</div>
+          <div class="product-cost" style="z-index: -1; height: 40px; width: 20%; float:left; font-size: 12pt; overflow: hidden;">541</div>
+        </div>
+        <div style="z-index: -1; width: 100%; height: 20px; float: left; background-color: #E1E5EB; padding: 2px 0 0 8px;">
+          <div class="product-date" style="z-index: -1; height: 20px; width: 85%; float:left; font-size: 8pt;">2017-03-12</div>
+          <div class="product-count" style=" z-index: -1; height: 20px; width: 15%; float:left; font-size: 8pt;">12</div>
+        </div>
+      </div>
+    </template>
+
+    <template id="checkTpl">
+        <div class="check">
+          <div id="check-head" style="width: 100%; height: 100px; background-color: #DDE1E2;">
+            <div style="width: 100%; align-content: center;">Спорт Комплекс RIM</div>
+            <div class="check-num" style="float: left; width: 50%;">Чек № </div>
+            <div class="check-date" style="float: left; width: 50%;">Дата: </div>
+          </div>
+          <div id="check-body" style="width: 100%; height: calc(100vh - 253px); overflow-y: auto; background-color: whitesmoke;">
+            <div style="width: 20%; float: left;"><strong>Товар</strong></div>
+            <div style="width: 20%; float: left;"><strong>Количество</strong></div>
+            <div style="width: 20%; float: left;"><strong>Цена</strong></div>
+            <div style="width: 20%; float: left;"><strong>Сумма</strong></div>
+            <div style="width: 20%; float: left;"><strong>Удалить</strong></div>
+          </div>
+          <div id="check-footer" style="width: 100%; height: 110px; background-color: #DDE1E2; padding: 8px 8px 8px 0;">
+            <div class="total" style="width: 25%; height: 20px; float:left;">Итого: </div>
+            <div class="note" style="width: 50%; height: 20px; float:left;">Купюра: <input style="width: 60%; border-radius: 4px;" id="note" type="text"></div>
+            <div class="change" style="width: 25%; height: 20px; float:left;">Сдача: </div>
+            <div class="comment" style="width: 100%; height: 20px; float:left;">Комментарий: <input style="width: 60%; border-radius: 4px;" id="comment" type="text"></div>
+            <button id="discardCheck" class="btn btn-danger" style="float: right; margin-top: 25px;"><i class="fa fa-close"></i> Отменить чек</button>
+            <button id="saveCheck" class="btn btn-success" style="float: right; margin-top: 25px; margin-right: 4px;"><i class="fa fa-save"></i> Сохранить</button>
+          </div>
+        </div>
+    </template>
+
+    <template id="check-item">
+      <div class="check-item" style="width: 100%; float: left; ">
+        <div class="check-invoice" style="width: 20%; float: left;"></div>
+        <div class="check-count" style="width: 20%; float: left;"><input onchange="isright(this);" style="width: 100%;" type="number" min="1"></div>
+        <div class="check-price" style="width: 20%; float: left;"></div>
+        <div class="check-sum" style="width: 20%; float: left; min-height: 1px;"></div>
+        <div style="width: 20%; float: left;">
+          <button class="btn btn-danger deleteCheckItem"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+    </template>
+
+    <template id="alert">
+      <div class="alert alert-dismissible fade in" style="position: absolute; top: 50%; left:50%;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+      </div>
+    </template>
+
+    <div class="alertBlock" id="alertBlock"></div>
+
+  <template id="shift">
+    <div class="shift" style="width: 100%; height: 100vh; background-color: #F5F5F5;">
+      <div class="shiftSubs" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 0; overflow-y: auto; border-right: black solid 1px; background-color: #F5F5F5;">
+        <div style="width: 100%; text-align: center;"><strong>Абонементы</strong></div>
+      </div>
+      <div class="shiftCash" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: calc(30% + 30px); overflow-y: auto; border-right: black solid 1px; padding-right: 2px; background-color: #F5F5F5;">
+        <div style="width: 100%; text-align: center;"><strong>Касса</strong></div>
+        <div class="panel-group" id="shiftCashGroup" style="width: 100%;">
+
+        </div>
+      </div>
+      <div class="shiftCosts" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 68%; overflow-y: auto; background-color: #F5F5F5; margin-top: 5px;">
+        <div style="width: 100%; text-align: center;"><strong>Расходы</strong></div>
+      </div>
+      <div id="closeShift" style="position: absolute; right: 20px; top: 47px; cursor: pointer;"><i class="fa fa-times"></i></div>
+      <div style="width: 100%; height: 100px; position: absolute; bottom: 0px; background-color: #DDE1E2;">
+        <div id="subMoney" style="position: absolute; top:0; left: 20%;"></div>
+        <div id="checkMoney" style="position: absolute; top:0; left: 50%;"></div>
+        <div id="costMoney" style="position: absolute; top:0; left: 90%;"></div>
+
+        <div id="shiftMoney" style="position: relative; top:50%; left: 50%;">Денег в кассе: </div>
+        <button id="endDay" style="position: absolute; bottom: 5px; right: 5px;" class="btn btn-success">Закрыть смену</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="cashItem">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#shiftCashGroup" href=""><i class="fa fa-glass"></i> </a>
+            <span style="float: right;"></span>
+          </h4>
+        </div>
+        <div id="" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="shiftCheckItemLeft"><strong>Товар</strong></div>
+            <div class="shiftCheckItemRight"><strong>Кол-во</strong></div>
+          </div>
+        </div>
+      </div>
+  </template>
+
+
+  </body>
+
+  <script>
+      const {ipcRenderer} = require('electron');
+
+      var products;
+      var units;
+
+      var sbs;
+      var csh;
+      var cst;
+      var summ;
+
+      var last;
+
+      $("#searchBtn").click(function (e) {
+          if ($("#searchClient").val() != "")
+            ipcRenderer.send("IpcToMain", {cmd:"searchBtnClicked", query: $("#searchClient").val()});
+          else
+              ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
+      });
+
+      $("#searchClient").keyup(function(e)
+      {
+          console.log(e);
+          if ($("#searchClient").val() != "")
+              ipcRenderer.send("IpcToMain", {cmd:"searchBtnClicked", query: $("#searchClient").val()});
+          else
+              ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
+      });
+
+      $("#showAddNewProductModal").click(function(e){
+          ipcRenderer.send("IpcToMain", {cmd:"getAllProductsType"});
+          $('#product-type').empty();
+      });
+
+      $('#addNewProductToInvoice').click(function(e){
+
+          let block = document.querySelector('#invoiceTpl').content.cloneNode(true);
+
+          let prd = block.querySelectorAll('select')[0];
+          for(let i = 0; i < products.length; i++)
+          {
+              let opt = document.createElement('option');
+              opt.setAttribute('value', products[i].id);
+              opt.innerHTML = products[i].title;
+              prd.appendChild(opt);
+          }
+          let unt = block.querySelectorAll('select')[1];
+          for(let i = 0; i < units.length; i++)
+          {
+              let opt = document.createElement('option');
+              opt.setAttribute('value', units[i].id);
+              opt.innerHTML = units[i].unit;
+              unt.appendChild(opt);
+          }
+          let modal = document.querySelector('#addNewInvoice');
+          modal.querySelector('.modal-body').appendChild(block);
+      });
+
+      $("#showAddNewInvoiceModal").click(function(e){
+          $('#invoiceBody').empty();
+          ipcRenderer.send("IpcToMain", {cmd:"getInvoiceProducts"});
+          ipcRenderer.send("IpcToMain", {cmd:"getInvoiceUnits"});
+      });
+
+
+      ipcRenderer.on("getAllProductsType",(event, rows) => {
+          let select = document.querySelector("#product-type");
+          for(let i = 0;i<rows.rows.length;i++)
+          {
+              let opt = document.createElement('option');
+              opt.setAttribute('value', rows.rows[i].id);
+              opt.innerHTML = rows.rows[i].title;
+              select.appendChild(opt);
+          }
+      });
+
+
+      ipcRenderer.on('getClients', (event, rows) => {
+          $('#leftSidebar').empty();
+          for (let i=0;i<rows.rows.length;i++)
+          {
+              let user = document.querySelector('#clientSideBar').content.cloneNode(true);
+
+              user.querySelectorAll('span')[0].innerHTML = rows.rows[i].surname;
+              user.querySelectorAll('span')[1].innerHTML = rows.rows[i].name;
+              user.querySelectorAll('span')[2].setAttribute('id',rows.rows[i].id);
+
+              document.querySelector('#leftSidebar').appendChild(user);
+          }
+      });
+
+
+      ipcRenderer.on('getAllClients', (event, rows) => {
+          $('#leftSidebar').empty();
+          for (let i=0;i<rows.rows.length;i++)
+          {
+              let user = document.querySelector('#clientSideBar').content.cloneNode(true);
+
+              user.querySelectorAll('span')[0].innerHTML = rows.rows[i].surname;
+              user.querySelectorAll('span')[1].innerHTML = rows.rows[i].name;
+              user.querySelectorAll('span')[2].setAttribute('id',rows.rows[i].id);
+
+              document.querySelector('#leftSidebar').appendChild(user);
+          }
+
+      });
+
+      ipcRenderer.on('getCurrentClient', (event, data) => {
+          $('#rightSide').empty();
+
+          let currentUser = document.querySelector('#currentClientTpl').content.cloneNode(true);
+
+          currentUser.querySelectorAll('span')[0].innerHTML = data.row.surname + " " + data.row.name + " " + data.row.patronymics;
+          currentUser.querySelectorAll('span')[1].innerHTML = data.row.phone;
+          currentUser.querySelectorAll('span')[2].innerHTML = "Дата регистрации: " + data.row.regdate;
+          currentUser.querySelector("#id-client").setAttribute('id-client', data.row.id);
+
+
+
+          document.querySelector('#rightSide').appendChild(currentUser);
+          ipcRenderer.send("IpcToMain", {cmd:"getAllSub", id_client: data.row.id});
+      });
+
+      ipcRenderer.on('getAllSub', (event, data) => {
+          let subs = document.querySelector('#currentClientSubTpl').content.cloneNode(true);
+          let tmp = subs.querySelectorAll('tbody')[0];
+          for (let i=0;i<data.rows.length;i++)
+          {
+              let item = document.createElement('tr');
+              if (Date.parse(data.rows[i].d_end) < Date.parse(new Date()))
+              {
+                  item.classList.add('danger');
+              }
+              else
+              {
+                  item.classList.add('success');
+              }
+              let td1 = document.createElement('td');
+              let td2 = document.createElement('td');
+              let td3 = document.createElement('td');
+              let td4 = document.createElement('td');
+              let td5 = document.createElement('td');
+              let td6 = document.createElement('td');
+              td1.innerHTML = data.rows[i].type;
+              td2.innerHTML = data.rows[i].visits;
+              td3.innerHTML = data.rows[i].d_start;
+              td4.innerHTML = data.rows[i].d_end;
+              td5.innerHTML = data.rows[i].trainer;
+              td6.innerHTML = data.rows[i].cost;
+              item.appendChild(td1);
+              item.appendChild(td2);
+              item.appendChild(td3);
+              item.appendChild(td4);
+              item.appendChild(td5);
+              item.appendChild(td6);
+
+            tmp.appendChild(item);
+
+          }
+          document.querySelector('#currentClientSub').appendChild(subs);
+      });
+
+      ipcRenderer.on("getAllProducts",function(err,rows)
+      {
+          $('#bar').empty();
+          $('#sport').empty();
+          $('#other').empty();
+          $('#water').empty();
+          $('#inventory').empty();
+          $('#consu').empty();
+
+          let bar = document.querySelector('#bar');
+          let sport = document.querySelector('#sport');
+          let other = document.querySelector('#other');
+          let water = document.querySelector('#water');
+          let inventory = document.querySelector('#inventory');
+          let consu = document.querySelector('#consu');
+          for (let i = 0; i < rows.data.length; i++)
+          {
+              let item = document.querySelector('#productTpl').content.cloneNode(true);
+              item.querySelector('.invoice-id').innerHTML = rows.data[i].id;
+              item.querySelector('.product-name').innerHTML = rows.data[i].title;
+              item.querySelector('.product-amount').innerHTML = rows.data[i].amount;
+              item.querySelector('.product-cost').innerHTML = rows.data[i].cost;
+              item.querySelector('.product-date').innerHTML = rows.data[i].date;
+              item.querySelector('.product-count').innerHTML = rows.data[i].count;
+
+             if (parseInt(rows.data[i].id_type) == 1)
+             {
+                bar.appendChild(item);
+             }
+             else if (parseInt(rows.data[i].id_type) == 2)
+             {
+                 sport.appendChild(item);
+             }
+             else if (parseInt(rows.data[i].id_type) == 3)
+             {
+                 other.appendChild(item);
+             }
+             else if (parseInt(rows.data[i].id_type) == 4)
+             {
+                 water.appendChild(item);
+             }
+             else if (parseInt(rows.data[i].id_type) == 5)
+             {
+                 consu.appendChild(item);
+             }
+             else if (parseInt(rows.data[i].id_type) == 6)
+             {
+                 inventory.appendChild(item);
+             }
+          }
+      });
+
+      ipcRenderer.on('getInvoiceUnits', (event, data) => {
+          units = data.data;
+      });
+
+      ipcRenderer.on('getInvoiceProducts', (event, data) => {
+          products = data.data;
+      });
+
+      ipcRenderer.on('getLastCheck', (event,data) => {
+          let check = document.querySelector('.check');
+          check.querySelector('.check-num').innerHTML += (parseInt(data.data.number)+1).toString();
+          var d = new Date();
+          var curr_date = d.getDate();
+          var curr_month = d.getMonth() + 1;
+          var curr_year = d.getFullYear();
+
+          check.querySelector('.check-date').innerHTML += d.toLocaleDateString().replaceAll('.','-');
+         //console.log(data);
+      });
+
+      ipcRenderer.on('getSubsSale', (event, data) =>{
+          //console.log(data.subscriptions);
+          sbs = data.subscriptions;
+      });
+
+      ipcRenderer.on('getCashSale', (event, data) =>{
+          //console.log(data.chck);
+          csh = data.chck;
+      });
+
+      ipcRenderer.on('getCosts', (event, data) =>{
+          //console.log(data.costs);
+          cst = data.costs;
+      });
+
+      ipcRenderer.on('getCheckSum', (event, data) =>{
+          //console.log(data.chck_sum);
+          summ = data.chck_sum;
+      });
+
+      ipcRenderer.on('getLastShift', (event, data) =>{
+         last = data.last;
+      });
+
+      $("#addNewClientBtn").click(function(){
+          if ($("#surname").val() == "" || $("#name").val() == "" || $("#phone").val() == "")
+          {
+              doAlert('Введите все данные!');
+              //alert("PLS ENTER DATA");
+          }
+          else
+          {
+              ipcRenderer.send("IpcToMain", {cmd:"addNewClient", data: {name: $("#name").val(), surname: $("#surname").val(), patronymics: $("#patronymics").val(), phone: $("#phone").val()}});
+              $("#surname").val('');
+              $("#name").val('');
+              $("#phone").val('');
+              $("#patronymics").val('');
+              $(".close").click();
+              ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
+          }
+      });
+
+      $("#addNewSubBtn").click(function () {
+          if ($("#type").val() == "" || $("#visits").val() == "" || $("#date-start").val() == "" || $("#date-end").val() == "" || $("#cost").val() == "")
+          {
+              doAlert('Введите все данные!');
+              //alert("PLS ENTER DATA");
+          }
+          else
+          {
+              ipcRenderer.send("IpcToMain",
+                  {
+                      cmd:"addNewSub",
+                      data:
+                          {
+                              id_client: document.getElementById('id-client').getAttribute('id-client'),
+                              type: $("#type").val(),
+                              visits: $("#visits").val(),
+                              date_start: $("#date-start").val(),
+                              date_end: $("#date-end").val(),
+                              trainer: $("#trainer").val(),
+                              cost: $("#cost").val()
+                          }
+                  }
+                );
+              $("#type").val('');
+              $("#visits").val('');
+              $("#date-start").val('');
+              $("#date-end").val('');
+              $("#trainer").val('');
+              $("#cost").val('');
+              $(".close").click();
+              //ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
+          }
+      });
+
+      $('#addNewProductBtn').click(function(e){
+         if($("#product-name").val() != "")
+         {
+             ipcRenderer.send("IpcToMain", {cmd:"addNewProduct", data: {type: $('#product-type').val(), product: $("#product-name").val()}});
+             $("#product-type").val('');
+             $("#product-name").val('');
+             $(".close").click();
+         }
+         else
+         {
+             doAlert('Введите все данные!');
+         }
+             //alert("PLS ENTER DATA");
+      });
+
+      $('#addNewSpendingBtn').click(function(e){
+          let block = document.querySelector('#addNewSpending');
+          let t = block.querySelector('.modal-body');
+          let direction = t.querySelectorAll('input')[0].value;
+          let cost = t.querySelectorAll('input')[1].value;
+          let obj = {direction: direction, cost: cost};
+          if(direction == "" || cost == "")
+          {
+              doAlert('Введите все данные!');
+              //alert("PLS ENTER DATA");
+          }
+          else {
+              ipcRenderer.send("IpcToMain", {cmd: "addNewSpending", data: obj});
+              t.querySelectorAll('input')[0].value = '';
+              t.querySelectorAll('input')[1].value = '';
+              $(".close").click();
+          }
+
+      });
+
+      $('#addNewInvoiceBtn').click(function(e){
+         let items = document.querySelectorAll('.invoiceItem');
+         for (let i = 0; i < items.length; i++)
+         {
+             let prod = items[i].querySelector('.product').value;
+             let count = items[i].querySelector('.count').value;
+             let units = items[i].querySelector('.units').value;
+             let cost = items[i].querySelector('.cost').value;
+             let obj = {product: prod, count: count, units: units, cost: cost};
+             ipcRenderer.send("IpcToMain", {cmd:"addNewInvoice", invoice: obj});
+         }
+          ipcRenderer.send("IpcToMain", {cmd:"getAllProducts"});
+          $('#invoiceBody').empty();
+          $(".close").click();
+      });
+
+      $('#createNewCheck').click(function (e) {
+          ipcRenderer.send('IpcToMain',{cmd:'getCheckSum'});
+          ipcRenderer.send("IpcToMain", {cmd:"getSubsSale"});
+          ipcRenderer.send("IpcToMain", {cmd:"getCashSale"});
+          ipcRenderer.send("IpcToMain", {cmd:"getCosts"});
+          ipcRenderer.send("IpcToMain", {cmd:"getLastShift"});
+
+          $('.main').hide();
+          let endOfDay = document.querySelector('#shift').content.cloneNode(true);
+          let subs = endOfDay.querySelector('.shiftSubs');
+          let cash = endOfDay.querySelector('.shiftCash');
+          let costs = endOfDay.querySelector('.shiftCosts');
+
+          let checkSum = 0;
+          let subSum = 0;
+          let costsSum = 0;
+          setTimeout(function () {
+              for(let i = 0; i < sbs.length; i++)
+              {
+                  let item = document.createElement('div');
+
+                  let name = document.createElement('div');
+                  let type = document.createElement('div');
+                  let cost = document.createElement('div');
+
+                  name.classList.add('subsClientName');
+                  type.classList.add('subsClientType');
+                  cost.classList.add('subsClientCost');
+
+
+                  name.innerHTML = sbs[i].surname + " " + sbs[i].name;
+                  type.innerHTML = sbs[i].type + " " + sbs[i].visits + ' пос.';
+                  cost.innerHTML = sbs[i].cost + " грн.";
+                  item.appendChild(name);
+                  item.appendChild(type);
+                  item.appendChild(cost);
+
+                  subs.appendChild(item);
+                  subSum += sbs[i].cost;
+              }
+              document.querySelector('#subMoney').innerHTML = "<strong>" + subSum + ' грн. </strong>';
+          }, 1000);
+
+          setTimeout(function () {
+              for(let i = 0; i < csh.length; i++)
+              {
+                  let cashItem = document.querySelector('#cashItem').content.cloneNode(true);
+                  if($('div').is('#csh'+ csh[i].check_num))
+                  {
+                      let title = document.createElement('div');
+                      let count = document.createElement('div');
+                      title.classList.add('shiftCheckItemLeft');
+                      count.classList.add('shiftCheckItemRight');
+                      title.innerHTML = csh[i].title;
+                      count.innerHTML = csh[i].count;
+                      document.querySelector('#csh'+ csh[i].check_num).querySelector('.panel-body').appendChild(title);
+                      document.querySelector('#csh'+ csh[i].check_num).querySelector('.panel-body').appendChild(count);
+                  }
+                  else {
+                      cashItem.querySelector('a').setAttribute('href', '#csh' + csh[i].check_num);
+                      cashItem.querySelector('a').innerHTML = "Чек № " + csh[i].check_num;
+                      cashItem.querySelector('.panel-collapse').setAttribute('id', 'csh' + csh[i].check_num);
+                      let title = document.createElement('div');
+                      let count = document.createElement('div');
+                      title.classList.add('shiftCheckItemLeft');
+                      count.classList.add('shiftCheckItemRight');
+                      title.innerHTML = csh[i].title;
+                      count.innerHTML = csh[i].count;
+                      cashItem.querySelector('.panel-body').appendChild(title);
+                      cashItem.querySelector('.panel-body').appendChild(count);
+
+                      for (let k = 0; k < summ.length; k++)
+                      {
+                          if(csh[i].check_num === summ[k].check_num)
+                          {
+                              cashItem.querySelector('.panel-title').querySelector('span').innerHTML = summ[k].sm + ' грн.';
+                              checkSum += parseFloat(summ[k].sm);
+                          }
+                      }
+
+
+                      cash.appendChild(cashItem);
+                  }
+
+
+              }
+              document.querySelector('#checkMoney').innerHTML = "<strong>" + checkSum + ' грн. </strong>';
+          }, 1000);
+
+          setTimeout(function () {
+              for(let i = 0; i < cst.length; i++)
+              {
+                  let item = document.createElement('div');
+                  let title = document.createElement('div');
+                  let cost = document.createElement('div');
+
+                  title.innerHTML = cst[i].title;
+                  title.classList.add('costsTitle');
+                  cost.innerHTML = cst[i].cost + ' грн.';
+                  cost.classList.add('costsPrice');
+                  item.appendChild(title);
+                  item.appendChild(cost);
+
+                  costs.appendChild(item);
+
+                  costsSum += parseFloat(cst[i].cost);
+              }
+              document.querySelector('#costMoney').innerHTML = "<strong>" + costsSum + ' грн. </strong>';
+          }, 1000);
+
+
+          setTimeout(function () {
+              let mn = last[0].money;
+              mn +=  subSum + checkSum - costsSum;
+              console.log(mn);
+              document.getElementById('shiftMoney').innerHTML += "<strong>" + mn + ' грн. </strong>';
+          },1100);
+
+          document.querySelector('#menu1').appendChild(endOfDay);
+
+
+          if($('div').is('.check'))
+          {
+              //alert("ЗАКРОЙ ЧЕК ПЕС!");
+             // doDangerAlert('Закрой чек САБАКА!');
+          }
+          else
+          {
+
+          }
+      });
+
+      $('#endDay').click(function(e)
+      {
+          if()
+      });
+
+      function openNewCheck() {
+          ipcRenderer.send("IpcToMain", {cmd: "getLastCheck"});
+          let rightSide = document.querySelector('#rightSideCash');
+          let check = document.querySelector('#checkTpl').content.cloneNode(true);
+          rightSide.appendChild(check);
+      }
+
+
+
+      function getTotal()
+      {
+          let items = document.querySelector('#check-body').querySelectorAll('.check-item');
+          let total = 0;
+          for(let i = 0;i < items.length;i++)
+          {
+              total += parseFloat(items[i].querySelector('.check-sum').innerHTML.substr(0,items[i].querySelector('.check-sum').innerHTML.length - 5));
+          }
+          document.querySelector('.total').innerHTML = 'Итого: ' + total + ' грн.';
+      }
+
+      $(document).on('click', ".deleteCurrentInvoice", function(e) {
+          $(this).closest('.invoiceItem').remove();
+      });
+
+      $(document).on('click', "#saveCheck", function(e) {
+          let items = document.querySelectorAll('.check-item');
+          for(let i = 0; i < items.length; i++)
+          {
+              let check_num = document.querySelector('.check').querySelector('.check-num').innerHTML;
+              check_num = check_num.substr(6,check_num.length);
+              let id_invoice = items[i].querySelector('.check-invoice').getAttribute('id-invoice');
+              let count = items[i].querySelector('.check-count').querySelector('input').value;
+              let sum = items[i].querySelector('.check-sum').innerHTML;
+              sum = sum.substr(0,sum.length - 5);
+              let date = new Date();
+              let cash = document.querySelector('#note').value;
+              let change = document.querySelector('.change').innerHTML;
+              change = change.substr(0, change.length - 5);
+              change = change.substr(7, change.length);
+              let comment = document.querySelector('.comment').querySelector('#comment').value;
+              let obj = {check_num: check_num, id_invoice: id_invoice, count: count, sum: sum, cash: cash, change: change, comment: comment};
+              ipcRenderer.send("IpcToMain", {cmd:"addNewInvoiceToCheck", data: obj});
+          }
+          $('.check').remove();
+          ipcRenderer.send("IpcToMain", {cmd:"getAllProducts"});
+          openNewCheck();
+      });
+
+      $(document).on('click', ".deleteCheckItem", function(e) {
+          $(this).closest('.check-item').remove();
+          getTotal();
+      });
+
+      $(document).on('contextmenu', ".invoiceProduct", function(e) {
+          if($('div').is('.check')) {
+              let invoice = e.target.parentNode.parentNode;
+
+              let checkInvoice = document.querySelector('#check-item').content.cloneNode(true);
+
+              let id_invoice = invoice.querySelector('.invoice-id').innerHTML;
+              let invoice_name = invoice.querySelector('.product-name').innerHTML;
+              let invoice_amount = invoice.querySelector('.product-amount').innerHTML;
+              let invoice_cost = invoice.querySelector('.product-cost').innerHTML;
+
+              if($('div').is('[id-invoice = '+ id_invoice +']'))
+              {
+                  doAlert('Данный товар уже в списке');
+              }
+              else {
+                  checkInvoice.querySelector('.check-invoice').setAttribute('id-invoice', id_invoice);
+                  checkInvoice.querySelector('.check-invoice').innerHTML = invoice_name;
+                  checkInvoice.querySelector('.check-count').querySelector('input').setAttribute('max', invoice_amount);
+                  checkInvoice.querySelector('.check-price').innerHTML = invoice_cost + ' грн.';
+
+                  document.querySelector('#check-body').appendChild(checkInvoice);
+              }
+          }
+          else
+          {
+              doAlert('Откройте чек, что бы добавить товар');
+          }
+      });
+
+      $(document).on('click', ".client", function(e) {
+          ipcRenderer.send("IpcToMain", {cmd:"getCurrentClient", id: e.target.querySelectorAll('span')[2].getAttribute('id')});
+      });
+
+      $( document ).ready(function() {
+          ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
+          ipcRenderer.send("IpcToMain", {cmd:"getAllProducts"});
+          ipcRenderer.send("IpcToMain", {cmd:"getInvoiceProducts"});
+          openNewCheck();
+      });
+
+      $('#phone').mask("+38(999) 999-99-99");
+
+      $('#type').change(function(e)
+      {
+         if( $('#type').val() == 'Зал' )
+         {
+             $('#visits').parent(".input-group").hide();
+         }
+         else
+         {
+             $('#visits').parent(".input-group").show();
+         }
+
+      });
+
+      function getProductsForReport() {
+          let select = document.querySelector('#productReport');
+          for (let i = 0; i< products.length;i++)
+          {
+              let opt = document.createElement('option');
+              opt.setAttribute('value', products[i].id);
+              opt.innerHTML = products[i].title;
+              select.appendChild(opt);
+          }
+      }
+
+      $(document).on('click', "#closeShift", function(e) {
+          if(confirm('Вы уверены?'))
+          {
+              $('.shift').empty();
+              $('.shift').hide();
+              $('.main').show();
+          }
+      });
+
+
+      $(document).on('keyup', "#note", function(e) {
+          if($('div').is('.check')) {
+              let total = document.querySelector('.total').innerHTML;
+              total = total.substr(7, total.length);
+              total = total.substr(0,total.length - 5);
+              document.querySelector('.change').innerHTML = 'Здача: ' + (this.value - total).toFixed(2) + ' грн.';
+          }
+      });
+
+      $(document).on('change', ".check-count", function(e) {
+          if($('div').is('.check')) {
+              let parent = e.target.parentNode.parentNode;
+              let sum = parseInt(parent.querySelector('.check-count').querySelector('input').value) * parseFloat(parent.querySelector('.check-price').innerHTML);
+              parent.querySelector('.check-sum').innerHTML = sum + " грн.";
+              getTotal();
+          }
+      });
+
+      $('#reports').click(function(e){
+          getProductsForReport();
+      });
+
+
+
+      function doAlert(text){
+          $('<div class="dangerAlert">' + text + '</div>').hide().prependTo("#alertBlock").fadeIn(300).delay(3000).fadeOut(1000);
+      }
+      function doDangerAlert(text){
+          $('<div class="redAlert">' + text + '</div>').hide().prependTo("#alertBlock").fadeIn(300).delay(3000).fadeOut(1000);
+      }
+
+      String.prototype.replaceAll = function(search, replace){
+          return this.split(search).join(replace);
+      };
+      
+      function showAlert(text, type) {
+          let alert = document.querySelector('#alert').content.cloneNode(true);
+          alert.querySelector('div').classList.add('alert-'+type);
+          alert.querySelector('div').innerHTML += text;
+          document.body.appendChild(alert);
+      }
+
+      function isright(obj)
+      {
+          var value= +obj.value.replace(/\D/g,'')||0;
+          var min = +obj.getAttribute('min');
+          var max = +obj.getAttribute('max');
+          obj.value = Math.min(max, Math.max(min, value));
+
+      }
+
+      $(function () {
+          $("[data-tog='tooltip']").tooltip();
+      });
+
+  </script>
+
+
+
+
+</html>

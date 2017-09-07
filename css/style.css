@@ -1,0 +1,108 @@
+#leftSidebar{
+    height: calc(100vh - 68px);
+    position: relative;
+    display:block;
+    background-color: #F0F4F8;
+    overflow-y: auto;
+
+}
+
+#rightSide{
+    padding: 0;
+}
+
+.client{
+    background-color: #B8CBDB;
+    margin: 4px 4px 4px 4px;
+    padding: 4px 4px 4px 4px;
+}
+
+.client:hover{
+    background-color: #596f8c;
+    color: white;
+}
+
+.invoiceProduct:hover{
+    background-color: #596f8c;
+}
+
+.redAlert{
+    width: 94%;
+    margin: 1vh auto;
+    min-height: 5vh;
+    color: #fff;
+    padding: 1vh;
+    font-size: 2vh;
+    background: rgba(126, 3, 0, 0.7);
+    border-radius: 1vh;
+    display: table-cell;
+    vertical-align: middle;
+}
+.alertBlock{
+    position: fixed;
+    pointer-events: none;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    -o-pointer-events: none;
+    top:0;
+    right: 0;
+    width: 30vh;
+    height: 100vh;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+}
+.dangerAlert{
+    width: 94%;
+    margin: 1vh auto;
+    min-height: 5vh;
+    color: #fff;
+    padding: 1vh;
+    font-size: 2vh;
+    background: rgba(43, 43, 43, 0.7);
+    border-radius: 1vh;
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 999999999;
+}
+
+#closeShift:hover{
+    color: #c20100;
+}
+
+.shiftCheckItemLeft{
+    float: left;
+    width: 80%;
+}
+.shiftCheckItemRight{
+    float: left;
+    width: 20%;
+}
+
+.subsClientName{
+    font-size: large;
+    margin-left: 10px;
+    border-top: #6a7c8c solid 1px;
+}
+
+.subsClientType{
+    width: 60%;
+    float: left;
+    margin-left: 10px;
+}
+
+.costsTitle{
+    font-size: large;
+    width: 70%;
+    float: left;
+    border-bottom: #6a7c8c solid 1px;
+    padding-top: 8px;
+}
+
+.costsPrice{
+    width: 30%;
+    float: left;
+    padding-top: 13px;
+}
