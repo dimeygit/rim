@@ -19,7 +19,7 @@ let db = new sqlite3.Database('./rim.sqlite');
 
 
 function createWindow () {
-  mainWindow = new BrowserWindow({width: 1100, height: 650, minWidth: 920, minHeight: 650});
+  mainWindow = new BrowserWindow({width: 1100, height: 650, minWidth: 920, minHeight: 650, icon: __dirname + '/logo.png'});
 
 
   mainWindow.loadURL(url.format({
@@ -60,10 +60,14 @@ ipcMain.on('IpcToMain', (event, arg) => {
             });
             break;
         case 'searchBtnClicked':
-            db.all("select * from clients where surname like '%'||$name||'%' or phone like '%'||$name||'%'", {$name: arg.query}, function(err,rows)
+            db.all("select c.* from clients c join subscriptions s on c.id = s.id_client where c.surname like '%'||$name||'%' or c.phone like '%'||$name||'%'  or (s.type like '%'||$name||'%' and s.d_end > date('now')) group by c.id", {$name: arg.query}, function(err,rows)
             {
                 mainWindow.webContents.send('getClients', { rows: rows});
             });
+            // db.all("select * from clients where surname like '%'||$name||'%' or phone like '%'||$name||'%'", {$name: arg.query}, function(err,rows)
+            // {
+            //     mainWindow.webContents.send('getClients', { rows: rows});
+            // });
         break;
         case 'addNewClient':
             db.run("insert into clients values (NULL,$name,$surname,$patronymics,$phone, date('now'), 0)",
@@ -100,7 +104,7 @@ ipcMain.on('IpcToMain', (event, arg) => {
             );
             break;
         case 'getAllSub':
-            db.all("select * from subscriptions where id_client = $id order by d_start desc", {$id: arg.id_client}, function(err,rows)
+            db.all("select s.*, (select count(id) from visits v where v.id_sub = s.id) as cnt  from subscriptions s where id_client = $id order by s.d_start desc", {$id: arg.id_client}, function(err,rows)
             {
                 mainWindow.webContents.send('getAllSub', { rows: rows});
             });
@@ -197,6 +201,87 @@ ipcMain.on('IpcToMain', (event, arg) => {
             db.all('SELECT  * FROM  shift ORDER BY  id DESC LIMIT 1', function(err,rows){
                 mainWindow.webContents.send('getLastShift',{last : rows});
             });
+            break;
+        case 'setEndOfDayMoney':
+            db.run('insert into shift values (NULL, $mn, date("now"))',
+                {
+                    $mn: arg.money
+                },
+                function(err,rows){
+                    if (!err)
+                    {
+                        app.quit();
+                    }
+                });
+            break;
+        case 'getVisitsFromId':
+            db.all('SELECT  * FROM  visits where  id_sub = $id order by date desc',{$id: arg.id}, function(err,rows){
+                mainWindow.webContents.send('getVisitsFromId',{rows : rows});
+            });
+            break;
+        case 'addNewVisit':
+            db.run('insert into visits values (NULL, $id, $date)',
+                {
+                    $id: arg.data.id,
+                    $date: arg.data.date
+                });
+            break;
+        case 'getSpendingReport':
+            db.all('select  * from spending where date BETWEEN $date_start AND $date_end',
+                {
+                    $date_start: arg.data.date_start,
+                    $date_end: arg.data.date_end
+                },
+                function(err,rows){
+                mainWindow.webContents.send('getSpendingReport',{rows : rows});
+            });
+            break;
+        case 'getComingReport':
+            db.all('select p.title, pa.count, pa.amount, pa.date, pa.cost from product_amount pa join products p on p.id = pa.id_product where pa.date BETWEEN $date_start AND $date_end',
+                {
+                    $date_start: arg.data.date_start,
+                    $date_end: arg.data.date_end
+                },function(err,rows) {
+                    mainWindow.webContents.send('getComingReport', {rows: rows});
+                });
+            break;
+        case 'getSubReport':
+            if (arg.data.spec)
+            {
+                db.all('select c.name, c.surname, s.type, s.trainer, s.visits, s.d_start, s.cost from subscriptions s join clients c on c.id = s.id_client  where (date("now") > s.d_end AND s.type = $type) OR (($dEnd >= s.d_start AND $dEnd <= s.d_end) AND ( s.visits <= ( select count(id) from visits v where v.id_sub = s.id)) AND s.type = $type)',
+                    {
+                        $dEnd: arg.data.dEnd,
+                        $type: arg.data.type
+
+                    },function(err,rows) {
+                        mainWindow.webContents.send('getSubReport', {rows: rows});
+                    });
+            }
+            else
+            {
+                db.all('select c.name, c.surname, s.type, s.trainer, s.visits, s.d_start, s.cost from subscriptions s join clients c on s.id_client = c.id where type = $type and d_start between $dStart and $dEnd',
+                    {
+                        $dStart: arg.data.dStart,
+                        $dEnd: arg.data.dEnd,
+                        $type: arg.data.type
+
+                    },function(err,rows) {
+                        mainWindow.webContents.send('getSubReport', {rows: rows});
+                    });
+
+            }
+            break;
+        case 'getSaleReport':
+            db.all('select p.title,  ch.date, sum(ch.count) as cnt, pa.cost, ch.comment  from chck ch join product_amount pa on ch.id_invoice = pa.id join products p on p.id = pa.id_product where ch.date between $dStart and $dEnd and p.id = $product group by ch.date, pa.cost, ch.comment',
+                {
+                    $dStart: arg.data.dStart,
+                    $dEnd: arg.data.dEnd,
+                    $product: arg.data.product
+
+                },function(err,rows) {
+                    mainWindow.webContents.send('getSaleReport', {rows: rows});
+                });
+
             break;
     }
 });

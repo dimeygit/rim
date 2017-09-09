@@ -22,9 +22,7 @@
     color: white;
 }
 
-.invoiceProduct:hover{
-    background-color: #596f8c;
-}
+
 
 .redAlert{
     width: 94%;
@@ -105,4 +103,67 @@
     width: 30%;
     float: left;
     padding-top: 13px;
+}
+
+td{
+    cursor: pointer;
+}
+
+td:hover:has (.subscriptionRow) {
+    background-color: #1b6d85;
+}
+
+.tableSubBodyScroll tbody {
+    display:block;
+    max-height:calc( 100vh - 228px);
+    overflow-y:auto;
+}
+.tableSubBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.tableSaleBodyScroll tbody {
+    display:block;
+    max-height:calc( 100vh - 212px);
+    overflow-y:auto;
+}
+.tableSaleBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.tableComingBodyScroll tbody {
+    display:block;
+    max-height:calc( 100vh - 180px);
+    overflow-y:auto;
+}
+.tableComingBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.tableSpendingBodyScroll tbody {
+    display:block;
+    max-height:calc( 100vh - 180px);
+    overflow-y:auto;
+}
+.tableSpendingBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.tableBodyScrollSub tbody {
+    display:block;
+    max-height:calc( 100vh - 245px);
+    overflow-y:auto;
+}
+.tableBodyScrollSub thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
 }

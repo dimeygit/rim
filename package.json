@@ -5,15 +5,11 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "rebuild": "electron-rebuild -f -w sqlite3"
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "build": "electron-packager . myApp --platform=win32 --arch=all --version=1.6.2 --app-version=0.1.0 --out=dist --ignore=dist --prune"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",

@@ -25,6 +25,10 @@
   </ul>
 
   <div class="tab-content">
+    <button id="showAddNewProductModal" data-tog="tooltip" data-placement="bottom" title="Добавить номенклатуру" class="btn btn-success" data-toggle="modal" data-target="#addNewProduct" style="position: absolute; top: 5px; right: 240px; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
+    <button id="showAddNewInvoiceModal" data-tog="tooltip" data-placement="bottom" title="Приход" class="btn btn-info" data-toggle="modal" data-target="#addNewInvoice" style=" margin-bottom: 4px; position: absolute; top: 5px; right: 200px;"><i class="fa fa-plus"></i></button>
+    <button class="btn btn-default" data-tog="tooltip" data-placement="bottom" title="Расход" data-toggle="modal" data-target="#addNewSpending" style="margin-bottom: 4px; position: absolute; top: 5px; right: 160px;"><i class="fa fa-plus"></i></button>
+    <button id="createNewCheck" data-tog="tooltip" data-placement="bottom" title="Закрыть смену" class="btn btn-danger" data-toggle="modal" style=" margin-bottom: 4px; position: absolute; top: 5px; right: 3px;"><i class="fa fa-times"></i></button>
     <div id="home" class="tab-pane fade in active">
       <div class="row" >
         <div class="col-sm-3" style="height: 100vh; background-color: #F0F4F8;">
@@ -53,10 +57,6 @@
        <div class="row main">
          <div id="leftSideCash" class="col-sm-4" style="height: calc(100vh - 42px); background-color: #F0F4F8; display: block; overflow-y: auto;">
            <div class="panel-group" id="collapse-group" style="width: 100%; margin-left: 7px; margin-top: 4px;">
-             <button id="showAddNewProductModal" data-tog="tooltip" data-placement="bottom" title="Добавить номенклатуру" class="btn btn-success" data-toggle="modal" data-target="#addNewProduct" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
-             <button id="showAddNewInvoiceModal" data-tog="tooltip" data-placement="bottom" title="Приход" class="btn btn-info" data-toggle="modal" data-target="#addNewInvoice" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
-             <button class="btn btn-info" data-tog="tooltip" data-placement="bottom" title="Расход" data-toggle="modal" data-target="#addNewSpending" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
-             <button id="createNewCheck" data-tog="tooltip" data-placement="bottom" title="Открыть чек" class="btn btn-info" data-toggle="modal" style="width: 100%; margin-bottom: 4px;"><i class="fa fa-plus"></i></button>
              <div class="panel panel-default">
                <div class="panel-heading">
                  <h4 class="panel-title">
@@ -72,7 +72,7 @@
              <div class="panel panel-default">
                <div class="panel-heading">
                  <h4 class="panel-title">
-                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el2"><i class="fa fa-glass"></i> Расходники</a>
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el2"><i class="fa fa-hand-pointer-o"></i> Расходники</a>
                  </h4>
                </div>
                <div id="el2" class="panel-collapse collapse">
@@ -84,7 +84,7 @@
              <div class="panel panel-default">
                <div class="panel-heading">
                  <h4 class="panel-title">
-                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el3"><i class="fa fa-glass"></i> Вода</a>
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el3"><i class="fa fa-beer"></i> Вода</a>
                  </h4>
                </div>
                <div id="el3" class="panel-collapse collapse">
@@ -96,7 +96,7 @@
              <div class="panel panel-default">
                <div class="panel-heading">
                  <h4 class="panel-title">
-                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el4"><i class="fa fa-glass"></i> Спортпит</a>
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el4"><i class="fa fa-child"></i> Спортпит</a>
                  </h4>
                </div>
                <div id="el4" class="panel-collapse collapse">
@@ -108,7 +108,7 @@
              <div class="panel panel-default">
                <div class="panel-heading">
                  <h4 class="panel-title">
-                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el5"><i class="fa fa-wheelchair-alt"></i> Инвентарь</a>
+                   <a data-toggle="collapse" data-parent="#collapse-group" href="#el5"><i class="fa fa-gavel"></i> Инвентарь</a>
                  </h4>
                </div>
                <div id="el5" class="panel-collapse collapse">
@@ -137,24 +137,133 @@
        </div>
     </div>
     <div id="menu2"  class="tab-pane fade">
-      <div style="width: 40%;">
-        <div>
-          <input style="width: 50%; float: left;" class="form-control" type="date">
-        </div>
-        <div>
-          <input style="width: 50%; float: left;" class="form-control" type="date">
-        </div>
-      </div>
-      <div  style="width: 40%;">
-        <input type="checkbox" style="width: 20%; float: left;" data-tog="tooltip" data-placement="bottom" title="Полько по продукту">
-        <select style="width: 80%; float: left;" class="form-control" name="" id="productReport">
+      <div class="startMoney" style="position: absolute; top: 53px; right: 90px; ">Денег на утро: 54654</div>
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#subReport">Абонементы</a></li>
+        <li><a data-toggle="tab" href="#saleReport">Продажи</a></li>
+        <li><a data-toggle="tab" href="#comingReport">Приход</a></li>
+        <li><a data-toggle="tab" href="#spendingReport">Расходы</a></li>
+      </ul>
+      <div class="tab-content">
+          <div id="subReport" class="tab-pane fade in active" style="margin-top: 20px; margin-left: 15px;">
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="subDateStart"> Дата с: </label><input style="display: inline-block; width: 80%" id="subDateStart" type="date" class="form-control">
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="subDateEnd"> Дата по: </label><input style="display: inline-block; width: 80%" id="subDateEnd" type="date" class="form-control">
+            </div>
+            <div style="width: 10%; display: inline-block;">
+              <button id="subReportSearchBtn" class="btn btn-success"><i class="fa fa-search"></i></button>
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="typeSubReport">Тип: </label>
+              <select style="display: inline-block; width: 70%" id="typeSubReport" class="form-control">
+                <option value="Зал">Зал</option>
+                <option value="Фитнес">Фитнес</option>
+                <option value="Йога">Йога</option>
+                <option value="Детская гимнастика">Детская гимнастика</option>
+              </select>
+            </div>
+            <div id="checkSubReport" style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 40%;" for="typeSubReport">Закончившиесь: </label>
+              <input style="display: inline-block; width: 34px;" for="typeSubReport" type="checkbox" class="form-control">
+            </div>
+            <table class="table tableSubBodyScroll table-striped">
+              <thead>
+              <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Тип</th>
+                <th>Посещения</th>
+                <th>Дата</th>
+                <th>Тренер</th>
+                <th>Цена</th>
+              </tr>
+              </thead>
+              <tbody>
 
-        </select>
-      </div>
-      <div style="width: 60px; height: 60px; position: absolute; left: 41%;">
-        <button style="width: 60px; height: 60px; font-size: larger;" class="btn btn-success">
-          <i class="fa fa-search"></i>
-        </button>
+              </tbody>
+            </table>
+          </div>
+          <div id="saleReport" class="tab-pane fade" style="margin-top: 20px; margin-left: 15px;">
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="saleDateStart"> Дата с: </label><input style="display: inline-block; width: 80%" id="saleDateStart" type="date" class="form-control">
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="saleDateEnd"> Дата по: </label><input style="display: inline-block; width: 80%" id="saleDateEnd" type="date" class="form-control">
+            </div>
+            <div style="width: 10%; display: inline-block;">
+              <button id="saleReportSearchBtn" class="btn btn-success"><i class="fa fa-search"></i></button>
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="saleProductReport">Товар: </label>
+              <select style="display: inline-block; width: 70%" id="saleProductReport" class="form-control">
+
+              </select>
+            </div>
+            <table class="table tableSaleBodyScroll table-striped">
+              <thead>
+              <tr>
+                <th>Товар</th>
+                <th>Дата</th>
+                <th>Кол-во</th>
+                <th>Цена</th>
+                <th>Комментарий</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="comingReport" class="tab-pane fade" style="margin-top: 20px; margin-left: 15px;">
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="comingDateStart"> Дата с: </label><input style="display: inline-block; width: 80%" id="comingDateStart" type="date" class="form-control">
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="comingDateEnd"> Дата по: </label><input style="display: inline-block; width: 80%" id="comingDateEnd" type="date" class="form-control">
+            </div>
+            <div style="width: 10%; display: inline-block;">
+              <button id="comingReportSearchBtn" class="btn btn-success"><i class="fa fa-search"></i></button>
+            </div>
+            <table class="table tableComingBodyScroll table-striped">
+              <thead>
+              <tr>
+                <th>Товар</th>
+                <th>В наличии</th>
+                <th>Всего</th>
+                <th>Дата</th>
+                <th>Цена</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="spendingReport" class="tab-pane fade" style="margin-top: 20px; margin-left: 15px;">
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="spendingDateStart"> Дата с: </label><input style="display: inline-block; width: 80%" id="spendingDateStart" type="date" class="form-control">
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <label style="display: inline-block; width: 20%;" for="spendingDateEnd"> Дата по: </label><input style="display: inline-block; width: 80%" id="spendingDateEnd" type="date" class="form-control">
+            </div>
+            <div style="width: 10%; display: inline-block;">
+              <button id="spendingReportSearchBtn" class="btn btn-success"><i class="fa fa-search"></i></button>
+            </div>
+            <table class="table tableSpendingBodyScroll table-striped"">
+              <thead>
+              <tr>
+                <th>Платеж</th>
+                <th>Дата</th>
+                <th>Цена</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
       </div>
     </div>
 
@@ -289,7 +398,7 @@
               <div class="input-group-addon">
                 <i class="fa fa-user"></i>
               </div>
-              <input type="text" class="form-control" id="cost" placeholder="Цена"/>
+              <input type="text" class="form-control" id="cost" placeholder="Цена" onchange="return isDigit(this);" onkeyup="return isDigit(this);"/>
             </div>
           </div>
           <div class="modal-footer">
@@ -367,7 +476,7 @@
             <label style="width: 70%; float: left;" >Куда</label>
             <label style="width: 30%; float: left;" >Сумма</label>
             <input type="text" style="width: 70%; float: left;" class="form-control">
-            <input type="text" style="width: 30%; float: left;" class="form-control">
+            <input type="text" style="width: 30%; float: left;" class="form-control" onchange="return isDigit(this);" onkeyup="return isDigit(this);">
           </div>
         </div>
         <div class="modal-footer">
@@ -378,35 +487,57 @@
     </div>
   </div>
 
+    <div class="modal fade modal" id="addNewVisit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </button>
+          <h4 class="modal-title">Добавить новое посещение</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden">
+          <input class="form-control" type="date">
+        </div>
+        <div class="modal-footer">
+          <button id="addNewVisitBtn" class="btn btn-success" type="submit"><i class="fa fa-sign-in"></i> Добавить</button>
+          <a class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Отмена</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <template id="clientSideBar">
-      <div class="client form-control" >
-        <span></span>
-        <span></span>
+      <div class="client form-control" style="padding-left: 8px; cursor: pointer;">
+        <span style="font-size: large;"></span>
+        <span style="font-size: large;"></span>
         <span style="display: none;"></span>
       </div>
     </template>
 
     <template id="currentClientTpl">
       <div style="width: 100%; position: absolute; top: 0; height: 25%; background-color: white; float: left;">
-        <span style="width: 100%; display: block; background-color: white;"></span>
-        <span style="width: 100%; display: block; background-color: white;"></span>
-        <span style="width: 100%; display: block; background-color: white;"></span>
+        <span style="width: 90%; display: block; background-color: white; margin: 10px 0 0 10px; font-size: 36px; "></span>
+        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#addSubModal" style="position: absolute; right: 25px; top: 25px;" data-tog="tooltip" data-placement="left" title="Добавить абонемент"><i class="fa fa-plus"></i></button>
+        <span style="width: 100%; display: block; background-color: white; margin: 4px 0 0 10px; font-size: 18px;"></span>
+        <span style="width: 100%; display: block; background-color: white; margin: 4px 0 0 10px; font-size: 18px;"></span>
         <div id="id-client" style="display: none;"></div>
-        <button type="button"  data-toggle="modal" data-target="#addSubModal" style="float:right; width: 15%;"><i class="fa fa-plus"></i></button>
+
       </div>
       <div style="width: 100%; height: 75%; position: absolute; bottom: 0; background-color: white; float: left;">
         <div id="currentClientSub" style="width: 80%; float: left;">
 
         </div>
-        <div style="width: 20%; float: left;">
-
+        <div id="currentSubVisits" style="width: 20%; float: left;">
+            <div style="margin: 8px 0 0 8px;"><strong>Посещения</strong><button id="openDialogAddVisits" style="display: none;" data-toggle="modal" data-target="#addNewVisit" data-tog="tooltip" data-placement="top" title="Добавить посещение" class="btn btn-success"><i class="fa fa-plus"></i></button></div>
         </div>
       </div>
     </template>
 
     <template id="currentClientSubTpl">
-      <table class="table">
+      <table class="table tableBodyScrollSub">
         <thead>
         <tr>
           <th>Тип</th>
@@ -440,7 +571,7 @@
         </div>
         <div style="width: 25%; display: inline-block;">
           <div style="display: inline-flex;">
-            <input type="text" class="form-control cost" style="width:60%; display: inline-block;">
+            <input type="text" class="form-control cost" style="width:60%; display: inline-block; " onchange="return isDigit(this);" onkeyup="return isDigit(this);">
             <span style="display: inline-block; width:40%;">грн/шт</span>
           </div>
         </div>
@@ -449,14 +580,14 @@
     </template>
 
     <template id="productTpl">
-      <div class="invoiceProduct" style="border-radius: 8px; width: 100%; height: 60px; margin-bottom: 2px; z-index: 99999999;">
+      <div class="invoiceProduct" style="border-radius: 8px; width: 100%; height: 60px; z-index: 99999999;">
         <div style="z-index: -1; width: 100%; min-height: 40px; float: left; background-color: #F1F1F1; border-bottom: black solid 1px; padding: 8px 0 0 8px; border-radius: 4px 4px 0 0;">
           <div class="invoice-id" style="z-index: -1; display: none;"></div>
           <div class="product-name" style="z-index: -1; min-height: 40px; width: 55%; float:left; font-size: 12pt; overflow: hidden;">Самогон</div>
           <div class="product-amount" style="z-index: -1; height: 40px; width: 25%; float:left; font-size: 12pt; overflow: hidden;">24</div>
           <div class="product-cost" style="z-index: -1; height: 40px; width: 20%; float:left; font-size: 12pt; overflow: hidden;">541</div>
         </div>
-        <div style="z-index: -1; width: 100%; height: 20px; float: left; background-color: #E1E5EB; padding: 2px 0 0 8px;">
+        <div style="z-index: -1; width: 100%; height: 20px; float: left; background-color: #E1E5EB; padding: 2px 0 0 8px; margin-bottom: 5px;">
           <div class="product-date" style="z-index: -1; height: 20px; width: 85%; float:left; font-size: 8pt;">2017-03-12</div>
           <div class="product-count" style=" z-index: -1; height: 20px; width: 15%; float:left; font-size: 8pt;">12</div>
         </div>
@@ -466,9 +597,9 @@
     <template id="checkTpl">
         <div class="check">
           <div id="check-head" style="width: 100%; height: 100px; background-color: #DDE1E2;">
-            <div style="width: 100%; align-content: center;">Спорт Комплекс RIM</div>
-            <div class="check-num" style="float: left; width: 50%;">Чек № </div>
-            <div class="check-date" style="float: left; width: 50%;">Дата: </div>
+            <div style="width: 100%; text-align: center; font-size: x-large; padding-top: 8px;">Спорт Комплекс RIM</div>
+            <div class="check-num" style="position: absolute; left: 100px; top: 50px; font-size: large;">Чек № </div>
+            <div class="check-date" style="position: absolute; left: 400px; top: 50px; font-size: large;">Дата: </div>
           </div>
           <div id="check-body" style="width: 100%; height: calc(100vh - 253px); overflow-y: auto; background-color: whitesmoke;">
             <div style="width: 20%; float: left;"><strong>Товар</strong></div>
@@ -481,15 +612,15 @@
             <div class="total" style="width: 25%; height: 20px; float:left;">Итого: </div>
             <div class="note" style="width: 50%; height: 20px; float:left;">Купюра: <input style="width: 60%; border-radius: 4px;" id="note" type="text"></div>
             <div class="change" style="width: 25%; height: 20px; float:left;">Сдача: </div>
-            <div class="comment" style="width: 100%; height: 20px; float:left;">Комментарий: <input style="width: 60%; border-radius: 4px;" id="comment" type="text"></div>
-            <button id="discardCheck" class="btn btn-danger" style="float: right; margin-top: 25px;"><i class="fa fa-close"></i> Отменить чек</button>
+            <div class="comment" style="width: 70%; height: 20px; position: absolute; bottom: 75px;">Комментарий: <input style="width: 60%; border-radius: 4px;" id="comment" type="text"></div>
+            <!--<button id="discardCheck" class="btn btn-danger" style="float: right; margin-top: 25px;"><i class="fa fa-close"></i> Отменить чек</button>-->
             <button id="saveCheck" class="btn btn-success" style="float: right; margin-top: 25px; margin-right: 4px;"><i class="fa fa-save"></i> Сохранить</button>
           </div>
         </div>
     </template>
 
     <template id="check-item">
-      <div class="check-item" style="width: 100%; float: left; ">
+      <div class="check-item" style="width: 100%; float: left; margin-bottom: 5px;">
         <div class="check-invoice" style="width: 20%; float: left;"></div>
         <div class="check-count" style="width: 20%; float: left;"><input onchange="isright(this);" style="width: 100%;" type="number" min="1"></div>
         <div class="check-price" style="width: 20%; float: left;"></div>
@@ -509,48 +640,61 @@
 
     <div class="alertBlock" id="alertBlock"></div>
 
-  <template id="shift">
-    <div class="shift" style="width: 100%; height: 100vh; background-color: #F5F5F5;">
-      <div class="shiftSubs" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 0; overflow-y: auto; border-right: black solid 1px; background-color: #F5F5F5;">
-        <div style="width: 100%; text-align: center;"><strong>Абонементы</strong></div>
-      </div>
-      <div class="shiftCash" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: calc(30% + 30px); overflow-y: auto; border-right: black solid 1px; padding-right: 2px; background-color: #F5F5F5;">
-        <div style="width: 100%; text-align: center;"><strong>Касса</strong></div>
-        <div class="panel-group" id="shiftCashGroup" style="width: 100%;">
-
+    <template id="shift">
+      <div class="shift" style="width: 100%; height: 100vh; background-color: #F5F5F5;">
+        <div class="shiftSubs" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 0; overflow-y: auto; border-right: black solid 1px; background-color: #F5F5F5;">
+          <div style="width: 100%; text-align: center;"><strong>Абонементы</strong></div>
         </div>
-      </div>
-      <div class="shiftCosts" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 68%; overflow-y: auto; background-color: #F5F5F5; margin-top: 5px;">
-        <div style="width: 100%; text-align: center;"><strong>Расходы</strong></div>
-      </div>
-      <div id="closeShift" style="position: absolute; right: 20px; top: 47px; cursor: pointer;"><i class="fa fa-times"></i></div>
-      <div style="width: 100%; height: 100px; position: absolute; bottom: 0px; background-color: #DDE1E2;">
-        <div id="subMoney" style="position: absolute; top:0; left: 20%;"></div>
-        <div id="checkMoney" style="position: absolute; top:0; left: 50%;"></div>
-        <div id="costMoney" style="position: absolute; top:0; left: 90%;"></div>
+        <div class="shiftCash" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: calc(30% + 30px); overflow-y: auto; border-right: black solid 1px; padding-right: 2px; background-color: #F5F5F5;">
+          <div style="width: 100%; text-align: center;"><strong>Касса</strong></div>
+          <div class="panel-group" id="shiftCashGroup" style="width: 100%;">
 
-        <div id="shiftMoney" style="position: relative; top:50%; left: 50%;">Денег в кассе: </div>
-        <button id="endDay" style="position: absolute; bottom: 5px; right: 5px;" class="btn btn-success">Закрыть смену</button>
-      </div>
-    </div>
-  </template>
-
-  <template id="cashItem">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#shiftCashGroup" href=""><i class="fa fa-glass"></i> </a>
-            <span style="float: right;"></span>
-          </h4>
-        </div>
-        <div id="" class="panel-collapse collapse">
-          <div class="panel-body">
-            <div class="shiftCheckItemLeft"><strong>Товар</strong></div>
-            <div class="shiftCheckItemRight"><strong>Кол-во</strong></div>
           </div>
         </div>
+        <div class="shiftCosts" style="width: 32%; height: calc(100vh - 142px); position: absolute; left: 68%; overflow-y: auto; background-color: #F5F5F5; margin-top: 5px;">
+          <div style="width: 100%; text-align: center;"><strong>Расходы</strong></div>
+        </div>
+        <div id="closeShift" style="position: absolute; right: 20px; top: 47px; cursor: pointer;"><i class="fa fa-times"></i></div>
+        <div style="width: 100%; height: 100px; position: absolute; bottom: 0px; background-color: #DDE1E2;">
+          <div id="subMoney" style="position: absolute; top:0; left: 20%;"></div>
+          <div id="checkMoney" style="position: absolute; top:0; left: 50%;"></div>
+          <div id="costMoney" style="position: absolute; top:0; left: 90%;"></div>
+
+          <div id="shiftMoney" style="position: relative; top:50%; left: 50%;">Денег в кассе: </div>
+          <button id="endDay" style="position: absolute; bottom: 5px; right: 5px;" class="btn btn-success">Закрыть смену</button>
+        </div>
       </div>
-  </template>
+    </template>
+
+    <template id="cashItem">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#shiftCashGroup" href=""><i class="fa fa-glass"></i> </a>
+              <span style="float: right;"></span>
+            </h4>
+          </div>
+          <div id="" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="shiftCheckItemLeft"><strong>Товар</strong></div>
+              <div class="shiftCheckItemRight"><strong>Кол-во</strong></div>
+            </div>
+          </div>
+        </div>
+    </template>
+
+    <template id="visitsTpl">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Посещения</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </template>
 
 
   </body>
@@ -567,6 +711,10 @@
       var summ;
 
       var last;
+
+      var mn;
+
+      var visits;
 
       $("#searchBtn").click(function (e) {
           if ($("#searchClient").val() != "")
@@ -646,6 +794,53 @@
           }
       });
 
+      ipcRenderer.on('getSpendingReport', (event, data) => {
+          document.querySelector('#spendingReport').querySelector('tbody').innerHTML = "";
+          for (let i = 0; i < data.rows.length; i++)
+          {
+              let tr = document.createElement('tr');
+              let td1 = document.createElement('td');
+              let td2 = document.createElement('td');
+              let td3 = document.createElement('td');
+              td1.innerHTML = data.rows[i].title;
+              td2.innerHTML = data.rows[i].date;
+              td3.innerHTML = data.rows[i].cost;
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+              document.querySelector('#spendingReport').querySelector('tbody').appendChild(tr);
+          }
+      });
+
+      ipcRenderer.on('getComingReport', (event, data) => {
+          document.querySelector('#comingReport').querySelector('tbody').innerHTML = "";
+          for (let i = 0; i < data.rows.length; i++)
+          {
+              let tr = document.createElement('tr');
+              let td1 = document.createElement('td');
+              let td2 = document.createElement('td');
+              let td3 = document.createElement('td');
+              let td4 = document.createElement('td');
+              let td5 = document.createElement('td');
+              td1.innerHTML = data.rows[i].title;
+              td2.innerHTML = data.rows[i].amount;
+              td3.innerHTML = data.rows[i].count;
+              td4.innerHTML = data.rows[i].date;
+              td5.innerHTML = data.rows[i].cost;
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+              tr.appendChild(td4);
+              tr.appendChild(td5);
+              document.querySelector('#comingReport').querySelector('tbody').appendChild(tr);
+          }
+      });
+
+      ipcRenderer.on('getVisitsFromId', (event, data) => {
+          console.log(data.rows);
+          visits = data.rows;
+      });
+
 
       ipcRenderer.on('getAllClients', (event, rows) => {
           $('#leftSidebar').empty();
@@ -681,10 +876,13 @@
       ipcRenderer.on('getAllSub', (event, data) => {
           let subs = document.querySelector('#currentClientSubTpl').content.cloneNode(true);
           let tmp = subs.querySelectorAll('tbody')[0];
+
           for (let i=0;i<data.rows.length;i++)
           {
               let item = document.createElement('tr');
-              if (Date.parse(data.rows[i].d_end) < Date.parse(new Date()))
+              item.id = "subscription" + data.rows[i].id;
+              item.classList.add('subscriptionRow');
+              if ((Date.parse(data.rows[i].d_end) < Date.parse(new Date())))
               {
                   item.classList.add('danger');
               }
@@ -692,6 +890,16 @@
               {
                   item.classList.add('success');
               }
+
+              if ((data.rows[i].visits <= data.rows[i].cnt) && data.rows[i].type != "Зал")
+              {
+                  item.classList.add('danger');
+              }
+              else
+              {
+                  item.classList.add('success');
+              }
+
               let td1 = document.createElement('td');
               let td2 = document.createElement('td');
               let td3 = document.createElement('td');
@@ -914,6 +1122,29 @@
           ipcRenderer.send("IpcToMain", {cmd:"getAllProducts"});
           $('#invoiceBody').empty();
           $(".close").click();
+          doAlert("Добавлено!");
+      });
+
+      $('#addNewVisitBtn').click(function(e){
+          let id = document.querySelector('#addNewVisit').querySelector('.modal-body').querySelectorAll('input')[0].value;
+          let date = document.querySelector('#addNewVisit').querySelector('.modal-body').querySelectorAll('input')[1].value;
+          ipcRenderer.send("IpcToMain", {cmd:"addNewVisit", data: {id: id, date: date}});
+          $(".close").click();
+          doAlert("Посещение добавлено!");
+      });
+
+      $('#spendingReportSearchBtn').click(function(e){
+         let dStart = document.querySelector('#spendingDateStart').value;
+         let dEnd = document.querySelector('#spendingDateEnd').value;
+         console.log(dStart);
+         console.log(dEnd);
+         ipcRenderer.send("IpcToMain", {cmd:"getSpendingReport", data: {date_start: dStart, date_end: dEnd}});
+      });
+
+      $('#comingReportSearchBtn').click(function(e){
+          let dStart = document.querySelector('#comingDateStart').value;
+          let dEnd = document.querySelector('#comingDateEnd').value;
+          ipcRenderer.send("IpcToMain", {cmd:"getComingReport", data: {date_start: dStart, date_end: dEnd}});
       });
 
       $('#createNewCheck').click(function (e) {
@@ -947,7 +1178,10 @@
 
 
                   name.innerHTML = sbs[i].surname + " " + sbs[i].name;
-                  type.innerHTML = sbs[i].type + " " + sbs[i].visits + ' пос.';
+                  if(sbs[i].type == "Зал")
+                      type.innerHTML = sbs[i].type;
+                  else
+                    type.innerHTML = sbs[i].type + " " + sbs[i].visits + ' пос.';
                   cost.innerHTML = sbs[i].cost + " грн.";
                   item.appendChild(name);
                   item.appendChild(type);
@@ -1028,29 +1262,42 @@
 
 
           setTimeout(function () {
-              let mn = last[0].money;
+              mn = last[0].money;
               mn +=  subSum + checkSum - costsSum;
-              console.log(mn);
               document.getElementById('shiftMoney').innerHTML += "<strong>" + mn + ' грн. </strong>';
           },1100);
 
           document.querySelector('#menu1').appendChild(endOfDay);
 
 
-          if($('div').is('.check'))
+      });
+
+      $(document).on('click', "#endDay", function(e) {
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+
+          var yyyy = today.getFullYear();
+          if(dd<10){
+              dd='0'+dd;
+          }
+          if(mm<10){
+              mm='0'+mm;
+          }
+          var today = yyyy+'-'+mm+'-'+dd;
+          console.log(today);
+          console.log(last[0].date);
+
+
+          if(today == last[0].date)
           {
-              //alert("ЗАКРОЙ ЧЕК ПЕС!");
-             // doDangerAlert('Закрой чек САБАКА!');
+              alert("Сегодня вы уже закрывали смену");
           }
           else
           {
-
+              ipcRenderer.send('IpcToMain', {cmd: 'setEndOfDayMoney', money: mn});
           }
-      });
 
-      $('#endDay').click(function(e)
-      {
-          if()
       });
 
       function openNewCheck() {
@@ -1060,6 +1307,100 @@
           rightSide.appendChild(check);
       }
 
+      $('#typeSubReport').change(function(e){
+          console.log($('#typeSubReport').val());
+         if($('#typeSubReport').val() != "Зал")
+         {
+             $('#checkSubReport').show();
+         }
+         else
+         {
+             $('#checkSubReport').hide();
+         }
+
+      });
+
+
+      ipcRenderer.on('getSubReport', (event, data) =>{
+          let tbody = document.querySelector('#subReport').querySelector('tbody');
+          tbody.innerHTML = '';
+          for (let i = 0; i< data.rows.length; i++)
+          {
+              let tr = document.createElement('tr');
+              let td1 = document.createElement('td');
+              let td2 = document.createElement('td');
+              let td3 = document.createElement('td');
+              let td4 = document.createElement('td');
+              let td5 = document.createElement('td');
+              let td6 = document.createElement('td');
+              let td7 = document.createElement('td');
+              td1.innerHTML = data.rows[i].surname;
+              td2.innerHTML = data.rows[i].name;
+              td3.innerHTML = data.rows[i].type;
+              td4.innerHTML = data.rows[i].visits;
+              td5.innerHTML = data.rows[i].d_start;
+              td6.innerHTML = data.rows[i].trainer;
+              td7.innerHTML = data.rows[i].cost;
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+              tr.appendChild(td4);
+              tr.appendChild(td5);
+              tr.appendChild(td6);
+              tr.appendChild(td7);
+              tbody.appendChild(tr);
+          }
+      });
+
+      $('#subReportSearchBtn').click(function(e)
+      {
+          let dStart = document.querySelector('#subDateStart').value;
+          let dEnd = document.querySelector('#subDateEnd').value;
+          let type = document.querySelector('#typeSubReport').value;
+          if (type != "Зал" && document.querySelector('#checkSubReport').querySelector('input').checked)
+          {
+              ipcRenderer.send("IpcToMain", {cmd:"getSubReport", data: {dStart: dStart, dEnd: dEnd, type: type, spec: true}});
+          }
+          else
+          {
+              ipcRenderer.send("IpcToMain", {cmd:"getSubReport", data: {dStart: dStart, dEnd: dEnd, type: type, spec: false}});
+          }
+
+
+      });
+
+      ipcRenderer.on('getSaleReport', (event, data) => {
+          let tbody = document.querySelector('#saleReport').querySelector('tbody');
+          tbody.innerHTML = '';
+          for (let i = 0; i < data.rows.length; i++)
+          {
+              let tr = document.createElement('tr');
+              let td1 = document.createElement('td');
+              let td2 = document.createElement('td');
+              let td3 = document.createElement('td');
+              let td4 = document.createElement('td');
+              let td5 = document.createElement('td');
+              td1.innerHTML = data.rows[i].title;
+              td2.innerHTML = data.rows[i].date;
+              td3.innerHTML = data.rows[i].cnt;
+              td4.innerHTML = data.rows[i].cost;
+              td5.innerHTML = data.rows[i].comment;
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+              tr.appendChild(td4);
+              tr.appendChild(td5);
+              tbody.appendChild(tr);
+          }
+      });
+
+      $('#saleReportSearchBtn').click(function(e){
+          let dStart = document.querySelector('#saleDateStart').value;
+          let dEnd = document.querySelector('#saleDateEnd').value;
+          let product = document.querySelector('#saleProductReport').value;
+
+          ipcRenderer.send("IpcToMain", {cmd:"getSaleReport", data: {dStart: dStart, dEnd: dEnd, product: product}});
+      });
 
 
       function getTotal()
@@ -1107,7 +1448,7 @@
       });
 
       $(document).on('contextmenu', ".invoiceProduct", function(e) {
-          if($('div').is('.check')) {
+          //if($('div').is('.check')) {
               let invoice = e.target.parentNode.parentNode;
 
               let checkInvoice = document.querySelector('#check-item').content.cloneNode(true);
@@ -1116,6 +1457,8 @@
               let invoice_name = invoice.querySelector('.product-name').innerHTML;
               let invoice_amount = invoice.querySelector('.product-amount').innerHTML;
               let invoice_cost = invoice.querySelector('.product-cost').innerHTML;
+
+              console.log(id_invoice);
 
               if($('div').is('[id-invoice = '+ id_invoice +']'))
               {
@@ -1129,21 +1472,43 @@
 
                   document.querySelector('#check-body').appendChild(checkInvoice);
               }
-          }
+          /*}
           else
           {
               doAlert('Откройте чек, что бы добавить товар');
-          }
+          }*/
       });
 
       $(document).on('click', ".client", function(e) {
-          ipcRenderer.send("IpcToMain", {cmd:"getCurrentClient", id: e.target.querySelectorAll('span')[2].getAttribute('id')});
+          if(e.target.classList.contains('client')) {
+              console.log(e.target);
+              ipcRenderer.send("IpcToMain", {
+                  cmd: "getCurrentClient",
+                  id: e.target.querySelectorAll('span')[2].getAttribute('id')
+              });
+          }
+          else
+          {
+              console.log(e.target.parentNode);
+
+              ipcRenderer.send("IpcToMain", {
+                  cmd: "getCurrentClient",
+                  id: e.target.parentNode.querySelectorAll('span')[2].getAttribute('id')
+              });
+          }
       });
 
       $( document ).ready(function() {
           ipcRenderer.send("IpcToMain", {cmd:"getAllClients"});
           ipcRenderer.send("IpcToMain", {cmd:"getAllProducts"});
           ipcRenderer.send("IpcToMain", {cmd:"getInvoiceProducts"});
+          ipcRenderer.send("IpcToMain", {cmd:"getLastShift"});
+
+          $('#checkSubReport').hide();
+          setTimeout(function(){
+              document.querySelector('.startMoney').innerHTML = '<strong>В кассе на утро: ' + last[0].money + ' грн. </strong>';
+              getProductsForReport();
+          },1000);
           openNewCheck();
       });
 
@@ -1163,7 +1528,7 @@
       });
 
       function getProductsForReport() {
-          let select = document.querySelector('#productReport');
+          let select = document.querySelector('#saleProductReport');
           for (let i = 0; i< products.length;i++)
           {
               let opt = document.createElement('option');
@@ -1180,6 +1545,35 @@
               $('.shift').hide();
               $('.main').show();
           }
+      });
+
+      $(document).on('click', ".subscriptionRow", function(e) {
+          let parent = e.target.parentNode;
+          $('#currentSubVisits').empty();
+          parent = parent.getAttribute('id').split('subscription');
+          ipcRenderer.send('IpcToMain', {cmd: "getVisitsFromId", id: parent[1]});
+          let tpl = document.querySelector('#visitsTpl').content.cloneNode(true);
+          let block =  tpl.querySelector('tbody');
+          setTimeout(function(){
+            for (let i = 0; i < visits.length; i++)
+            {
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                tr.classList.add('info');
+                td.innerHTML = visits[i].date;
+                tr.appendChild(td);
+                block.appendChild(tr);
+            }
+          },1000);
+          document.querySelector('#currentSubVisits').appendChild(tpl);
+      });
+
+      $(document).on('contextmenu', ".subscriptionRow", function(e) {
+          let parent = e.target.parentNode;
+          parent = parent.getAttribute('id').split('subscription');
+          document.querySelector('#addNewVisit').querySelector('.modal-body').querySelectorAll('input')[0].value = parent[1];
+          $("#addNewVisit").modal('show');
+          //$('#openDialogAddVisits').click();
       });
 
 
@@ -1201,9 +1595,9 @@
           }
       });
 
-      $('#reports').click(function(e){
+      /*$('#reports').click(function(e){
           getProductsForReport();
-      });
+      });*/
 
 
 
@@ -1217,7 +1611,7 @@
       String.prototype.replaceAll = function(search, replace){
           return this.split(search).join(replace);
       };
-      
+
       function showAlert(text, type) {
           let alert = document.querySelector('#alert').content.cloneNode(true);
           alert.querySelector('div').classList.add('alert-'+type);
@@ -1237,6 +1631,12 @@
       $(function () {
           $("[data-tog='tooltip']").tooltip();
       });
+
+      function isDigit(input) {
+          //input.value = this.value.replace (/[^0-9+]/, '')
+          input.value = input.value.replace(/[^\d,.]/g, '');
+      };
+
 
   </script>
 
